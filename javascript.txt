@@ -1,0 +1,93 @@
+1. function square(num){
+
+   return num*num;
+}
+
+const number = 7;
+const squarenumber = squarenumber(number);
+console.log(squarenumber);
+*****************************************************************
+2. function generateGreting(name){
+   return `${name} Welcome to party`
+   }
+const person1 = "suman";
+const person2 = "arun";
+const person3 = "reddy";
+
+console.log(generateGreting(person1));
+console.log(generateGreting(person2));
+console.log(generateGreting(person3));
+**********************************************************************
+3.(function(){
+    const number = 8;
+    const square = number*number;
+    console.log(`${number} is square ${square}`)
+})
+();
+********************************************************************
+4. function calculateTax() {
+ 
+  const taxRates = [
+    { minIncome: 0, maxIncome: 10000, rate: 0.05 },
+    { minIncome: 10000, maxIncome: 50000, rate: 0.1 },
+    { minIncome: 50000, maxIncome: 100000, rate: 0.15 },
+    { minIncome: 100000, maxIncome: Infinity, rate: 0.2 }
+  ];
+
+  return function(income) {
+    
+    const applicableRate = taxRates.find(rate => income >= rate.minIncome && income < rate.maxIncome);
+
+  
+    if (applicableRate) {
+      return income * applicableRate.rate;
+    } else {
+      return "Invalid income";
+    }
+  };
+}
+
+
+const calculateTaxForIncome = calculateTax();
+
+console.log(`Tax for $6000: $${calculateTaxForIncome(6000)}`);
+console.log(`Tax for $35000: $${calculateTaxForIncome(35000)}`);
+console.log(`Tax for $90000: $${calculateTaxForIncome(90000)}`);
+console.log(`Tax for $200000: $${calculateTaxForIncome(200000)}`);
+********************************************************************************************************
+5.
+function factorial(n){
+    if (n===0){
+    return 1;
+    }
+    else{
+        return n* factorial(n-1);
+    }
+}
+console.log(factorial(0));
+console.log(factorial(1));
+console.log(factorial(8));
+**************************************************************************************
+6 function curry(func) {
+  return function curried(...args) {
+    if (args.length >= func.length) {
+      return func.apply(null, args);
+    } else {
+      return function(...nextArgs) {
+        return curried.apply(null, args.concat(nextArgs));
+      };
+    }
+  };
+}
+
+
+function add(a, b) {
+  return a + b;
+}
+
+const curriedAdd = curry(add);
+
+console.log(curriedAdd(2)(3)); 
+console.log(curriedAdd(5)(7)); 
+console.log(curriedAdd(8, 4)); 
+
